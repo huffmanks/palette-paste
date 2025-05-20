@@ -1,10 +1,10 @@
-import { window } from "vscode";
+import { window, workspace } from "vscode";
 
-import { toAlpha, toRoman } from "./utils";
+import { formatDate, sortCursors, toAlpha, toRoman } from "./utils";
 
-type GeneratorFn = (count: number) => readonly string[];
+type SequenceGenerator = (count: number) => readonly string[];
 
-export function insertAtCursors(source: readonly string[] | GeneratorFn) {
+export function insertAtCursors(source: readonly string[] | SequenceGenerator) {
   return async () => {
     const editor = window.activeTextEditor;
     if (!editor) {
@@ -12,7 +12,7 @@ export function insertAtCursors(source: readonly string[] | GeneratorFn) {
     }
 
     await editor.edit((editBuilder) => {
-      const cursors = editor.selections;
+      const cursors = sortCursors(editor.selections);
       const data = typeof source === "function" ? source(cursors.length) : source;
 
       cursors.forEach((cursor, i) => {
@@ -23,14 +23,23 @@ export function insertAtCursors(source: readonly string[] | GeneratorFn) {
   };
 }
 
-export function counter(start: number): GeneratorFn {
+export function generateCounter(start: number): SequenceGenerator {
   return (count: number) => Array.from({ length: count }, (_, i) => String(i + start));
 }
 
-export function alpha(start: number, isUpper = true): GeneratorFn {
+export function generateAlpha(start: number, isUpper = true): SequenceGenerator {
   return (count: number) => Array.from({ length: count }, (_, i) => toAlpha(i + start, isUpper));
 }
 
-export function roman(start: number, isUpper = true): GeneratorFn {
+export function generateRoman(start: number, isUpper = true): SequenceGenerator {
   return (count: number) => Array.from({ length: count }, (_, i) => toRoman(i + start + 1, isUpper));
+}
+
+export function generateDate(): SequenceGenerator {
+  return (count: number) => {
+    const config = workspace.getConfiguration("palettePaste");
+    const format = config.get("defaultDateFormat") as string;
+    const date = formatDate(format, new Date());
+    return Array(count).fill(date);
+  };
 }

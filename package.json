@@ -13,30 +13,58 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Palette Paste",
+      "properties": {
+        "palettePaste.defaultDateFormat": {
+          "type": "string",
+          "enum": [
+            "ISO",
+            "UTC",
+            "Locale",
+            "Unix"
+          ],
+          "default": "ISO",
+          "description": "Format to use when inserting the current date. Change using the 'Set Default Date Format' command."
+        }
+      }
+    },
     "commands": [
       {
-        "command": "huffmanks.palette-paste.sequenceFromZero",
-        "title": "Palette Paste: [Number] (0,1,2,…∞)"
+        "command": "huffmanks.palette-paste.numberFromZero",
+        "title": "Palette Paste: [Number] (0, 1, 2, …)"
       },
       {
-        "command": "huffmanks.palette-paste.sequenceFromOne",
-        "title": "Palette Paste: [Number] (1,2,3,…∞)"
+        "command": "huffmanks.palette-paste.numberFromOne",
+        "title": "Palette Paste: [Number] (1, 2, 3, …)"
+      },
+      {
+        "command": "huffmanks.palette-paste.numberFromPrompt",
+        "title": "Palette Paste: [Number Prompt] (Start from prompt)"
       },
       {
         "command": "huffmanks.palette-paste.lowerAlpha",
-        "title": "Palette Paste: [Lower Alpha] (a,b,c,…n)"
+        "title": "Palette Paste: [Lower Alpa] (a, b, c, …)"
       },
       {
         "command": "huffmanks.palette-paste.upperAlpha",
-        "title": "Palette Paste: [Upper Alpha] (A,B,C,…N)"
+        "title": "Palette Paste: [Upper Alpha] (A, B, C, …)"
       },
       {
         "command": "huffmanks.palette-paste.lowerRoman",
-        "title": "Palette Paste: [Lower Roman] (i,ii,iii,…n)"
+        "title": "Palette Paste: [Lower Roman] (i, ii, iii, …)"
       },
       {
         "command": "huffmanks.palette-paste.upperRoman",
-        "title": "Palette Paste: [Upper Roman] (I,II,III,…N)"
+        "title": "Palette Paste: [Upper Roman] (I, II, III, …)"
+      },
+      {
+        "command": "huffmanks.palette-paste.insertDate",
+        "title": "Palette Paste: [Insert Date]"
+      },
+      {
+        "command": "huffmanks.palette-paste.setDefaultDateFormat",
+        "title": "Palette Paste: [Set Default Date Format]"
       }
     ]
   },

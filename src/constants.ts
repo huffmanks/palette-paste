@@ -13,3 +13,5 @@ export const numerals: [string, number][] = [
   ["IV", 4],
   ["I", 1],
 ];
+
+export const availableDateFormats = ["ISO", "UTC", "Locale", "Unix"];
