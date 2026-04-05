@@ -10,6 +10,15 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "snippet",
+    "counter",
+    "uuid",
+    "sequence",
+    "paste"
+  ],
+  "license": "MIT",
+  "icon": "./assets/logo.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/huffmanks/palette-paste"
