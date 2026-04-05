@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { window, workspace } from "vscode";
 
 import { formatDate, sortCursors, toAlpha, toRoman } from "./utils";
@@ -33,6 +34,10 @@ export function generateAlpha(start: number, isUpper = true): SequenceGenerator 
 
 export function generateRoman(start: number, isUpper = true): SequenceGenerator {
   return (count: number) => Array.from({ length: count }, (_, i) => toRoman(i + start + 1, isUpper));
+}
+
+export function generateUuid(): SequenceGenerator {
+  return (count: number) => Array.from({ length: count }, () => randomUUID());
 }
 
 export function generateDate(): SequenceGenerator {

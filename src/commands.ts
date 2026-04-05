@@ -1,4 +1,4 @@
-import { generateAlpha, generateCounter, generateDate, generateRoman, insertAtCursors } from "./generators";
+import { generateAlpha, generateCounter, generateDate, generateRoman, generateUuid, insertAtCursors } from "./generators";
 import { numberPrompt } from "./prompts";
 
 export const numberFromZero = insertAtCursors(generateCounter(0));
@@ -8,4 +8,5 @@ export const lowerAlpha = insertAtCursors(generateAlpha(0, false));
 export const upperAlpha = insertAtCursors(generateAlpha(0, true));
 export const lowerRoman = insertAtCursors(generateRoman(0, false));
 export const upperRoman = insertAtCursors(generateRoman(0, true));
+export const insertUuid = insertAtCursors(generateUuid());
 export const insertDate = insertAtCursors(generateDate());
