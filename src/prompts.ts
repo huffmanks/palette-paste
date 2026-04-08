@@ -21,5 +21,5 @@ export async function setDefaultDateFormat() {
 
   const config = workspace.getConfiguration("palettePaste");
   await config.update("defaultDateFormat", choice, true);
-  window.showInformationMessage(`Palette Paste: Default date format set to '${choice}'.`);
+  window.showInformationMessage(`PalettePaste: Default date format set to '${choice}'.`);
 }

@@ -1,8 +1,8 @@
-# Palette Paste
+# PalettePaste
 
-Insert structured, repetitive text patterns in seconds.
+Quickly generate and insert sequences at your cursor(s) in VS Code. Supports numbers, letters, Roman numerals, dates and UUIDs.
 
-Palette Paste is a VS Code extension that helps you quickly generate and insert sequences like numbers, letters, roman numerals, dates and UUIDs.
+PalettePaste was inspired by [Text Pastry for VS Code](https://marketplace.visualstudio.com/items?itemName=jkjustjoshing.vscode-text-pastry) and offers similar multi-cursor sequence generation in a lightweight, minimal package. It adds support for various date formats and has no runtime dependencies, making it a practical, straightforward alternative.
 
 ## Features
 
@@ -16,28 +16,30 @@ Generate common sequences instantly:
 
 ## Usage
 
-1. Place one or more cursors where you want content inserted.
+1. Place one or more cursors where you want to insert sequences.
 2. Open the Command Palette (Cmd/Ctrl + Shift + P).
-3. Run a Palette Paste command (see below).
+3. Run a PalettePaste command (see below).
 4. The sequence will be inserted across all cursors.
 
 ## Commands
 
-- Palette Paste: Numbers (0…)
-- Palette Paste: Numbers (1…)
-- Palette Paste: Numbers (Custom…)
-- Palette Paste: Letters (a…)
-- Palette Paste: Letters (A…)
-- Palette Paste: Roman (i…)
-- Palette Paste: Roman (I…)
-- Palette Paste: UUID
-- Palette Paste: Date
-- Palette Paste: Set Date Format
+- PalettePaste: Numbers (0…)
+- PalettePaste: Numbers (1…)
+- PalettePaste: Numbers (Custom…)
+- PalettePaste: Letters (a…)
+- PalettePaste: Letters (A…)
+- PalettePaste: Roman (i…)
+- PalettePaste: Roman (I…)
+- PalettePaste: UUID
+- PalettePaste: Date
+- PalettePaste: Set Date Format
 
 ## Release Notes
 
+### 1.0.1
+
+- Updated extension name and related documentation (README, repository description, changelog)
+
 ### 1.0.0
 
-- Initial release of Palette Paste.
-- Number, letter and roman numeral sequences.
-- UUID and date insertion with configurable format.
+- Initial release of PalettePaste.

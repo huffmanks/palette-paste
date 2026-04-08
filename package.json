@@ -1,9 +1,9 @@
 {
-  "name": "palette-paste",
-  "displayName": "Palette Paste",
-  "description": "VS Code extension for inserting structured, repetitive text patterns using custom templates and sequences.",
+  "name": "palette-paste-ext",
+  "displayName": "PalettePaste",
+  "description": "Quickly generate and insert sequences at your cursor(s) in VS Code. Supports numbers, letters, Roman numerals, dates and UUIDs.",
   "publisher": "huffmanks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.100.0"
   },
@@ -27,7 +27,7 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Palette Paste",
+      "title": "PalettePaste",
       "properties": {
         "palettePaste.defaultDateFormat": {
           "type": "string",
@@ -45,43 +45,43 @@
     "commands": [
       {
         "command": "huffmanks.palette-paste.numberFromZero",
-        "title": "Palette Paste: Number (0…)"
+        "title": "PalettePaste: Number (0…)"
       },
       {
         "command": "huffmanks.palette-paste.numberFromOne",
-        "title": "Palette Paste: Number (1…)"
+        "title": "PalettePaste: Number (1…)"
       },
       {
         "command": "huffmanks.palette-paste.numberFromPrompt",
-        "title": "Palette Paste: Number (Custom…)"
+        "title": "PalettePaste: Number (Custom…)"
       },
       {
         "command": "huffmanks.palette-paste.lowerAlpha",
-        "title": "Palette Paste: Letters (a…)"
+        "title": "PalettePaste: Letters (a…)"
       },
       {
         "command": "huffmanks.palette-paste.upperAlpha",
-        "title": "Palette Paste: Letters (A…)"
+        "title": "PalettePaste: Letters (A…)"
       },
       {
         "command": "huffmanks.palette-paste.lowerRoman",
-        "title": "Palette Paste: Roman (i…)"
+        "title": "PalettePaste: Roman (i…)"
       },
       {
         "command": "huffmanks.palette-paste.upperRoman",
-        "title": "Palette Paste: Roman (I…)"
+        "title": "PalettePaste: Roman (I…)"
       },
       {
         "command": "huffmanks.palette-paste.insertUuid",
-        "title": "Palette Paste: UUID"
+        "title": "PalettePaste: UUID"
       },
       {
         "command": "huffmanks.palette-paste.insertDate",
-        "title": "Palette Paste: Date"
+        "title": "PalettePaste: Date"
       },
       {
         "command": "huffmanks.palette-paste.setDefaultDateFormat",
-        "title": "Palette Paste: Set Date Format"
+        "title": "PalettePaste: Set Date Format"
       }
     ]
   },
