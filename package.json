@@ -3,7 +3,7 @@
   "displayName": "PalettePaste",
   "description": "Quickly generate and insert sequences at your cursor(s) in VS Code. Supports numbers, letters, Roman numerals, dates and UUIDs.",
   "publisher": "huffmanks",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.100.0"
   },
@@ -32,12 +32,13 @@
         "palettePaste.defaultDateFormat": {
           "type": "string",
           "enum": [
+            "DateTime",
             "ISO",
-            "UTC",
             "Locale",
-            "Unix"
+            "Unix",
+            "UTC"
           ],
-          "default": "ISO",
+          "default": "DateTime",
           "description": "Format to use when inserting the current date. Change using the 'Set Default Date Format' command."
         }
       }

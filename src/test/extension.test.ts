@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 import { Position, Selection } from "vscode";
-import { availableDateFormats } from "../constants";
+import { DATE_FORMAT_OPTIONS } from "../constants";
 import { generateAlpha, generateCounter, generateDate, generateRoman, generateUuid } from "../generators";
 import { formatDate, sortCursors, toAlpha, toRoman } from "../utils";
 
@@ -36,18 +36,16 @@ suite("Utils", () => {
     assert.strictEqual(toRoman(1994, true), "MCMXCIV");
   });
 
+  test("formatDate should handle DateTime format", () => {
+    const date = new Date("2026-04-05T00:00:00Z");
+    const result = formatDate("DateTime", date);
+    assert.match(result, /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
+  });
+
   test("formatDate should handle ISO format", () => {
     const date = new Date("2026-04-05T00:00:00Z");
     const result = formatDate("ISO", date);
-    assert.strictEqual(typeof result, "string");
-    assert(result.includes("2026"));
-  });
-
-  test("formatDate should handle UTC format", () => {
-    const date = new Date("2026-04-05T00:00:00Z");
-    const result = formatDate("UTC", date);
-    assert.strictEqual(typeof result, "string");
-    assert(result.length > 0);
+    assert.strictEqual(result, "2026-04-05T00:00:00.000Z");
   });
 
   test("formatDate should handle Locale format", () => {
@@ -60,7 +58,13 @@ suite("Utils", () => {
   test("formatDate should handle Unix format", () => {
     const date = new Date("2026-04-05T00:00:00Z");
     const result = formatDate("Unix", date);
-    assert(Number.isFinite(Number(result)));
+    assert.strictEqual(result, "1775347200");
+  });
+
+  test("formatDate should handle UTC format", () => {
+    const date = new Date("2026-04-05T00:00:00Z");
+    const result = formatDate("UTC", date);
+    assert.strictEqual(result, "Sun, 05 Apr 2026 00:00:00 GMT");
   });
 
   test("formatDate should return empty string for unknown format", () => {
@@ -160,7 +164,6 @@ suite("Generators", () => {
     const result = gen(3);
 
     assert.strictEqual(result.length, 3);
-    // Check UUID format (v4 format)
     assert(result.every((uuid) => /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(uuid)));
   });
 
@@ -185,17 +188,25 @@ suite("Generators", () => {
     const gen = generateDate();
     const result = gen(1);
 
-    // Result should be non-empty string
     assert.strictEqual(typeof result[0], "string");
     assert(result[0].length > 0);
   });
 });
 
 suite("Constants", () => {
-  test("availableDateFormats should contain expected formats", () => {
-    assert(availableDateFormats.includes("ISO"));
-    assert(availableDateFormats.includes("UTC"));
-    assert(availableDateFormats.includes("Locale"));
-    assert(availableDateFormats.includes("Unix"));
+  test("DATE_FORMAT_OPTIONS should contain expected formats", () => {
+    const expectedLabels = ["DateTime", "ISO", "Locale", "Unix", "UTC"];
+    expectedLabels.forEach((label) => {
+      const exists = DATE_FORMAT_OPTIONS.some((option) => option.label === label);
+      assert.strictEqual(exists, true, `Format option '${label}' is missing from DATE_FORMAT_OPTIONS`);
+    });
+  });
+
+  test("DATE_FORMAT_OPTIONS should have required UI properties", () => {
+    DATE_FORMAT_OPTIONS.forEach((option) => {
+      assert.ok(option.label, "Option missing label");
+      assert.ok(option.description, `Option ${option.label} missing description`);
+      assert.ok(option.detail, `Option ${option.label} missing detail`);
+    });
   });
 });

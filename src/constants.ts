@@ -1,4 +1,4 @@
-export const numerals: [string, number][] = [
+export const NUMERALS: [string, number][] = [
   ["M", 1000],
   ["CM", 900],
   ["D", 500],
@@ -14,4 +14,30 @@ export const numerals: [string, number][] = [
   ["I", 1],
 ];
 
-export const availableDateFormats = ["ISO", "UTC", "Locale", "Unix"];
+export const DATE_FORMAT_OPTIONS = [
+  {
+    label: "DateTime",
+    description: "$(home) Local",
+    detail: "YYYY-MM-DD HH:mm:ss",
+  },
+  {
+    label: "ISO",
+    description: "$(globe) UTC",
+    detail: "YYYY-MM-DDTHH:mm:ss.sssZ",
+  },
+  {
+    label: "Locale",
+    description: "$(home) Local",
+    detail: "Based on your system’s regional settings",
+  },
+  {
+    label: "Unix",
+    description: "$(globe) UTC",
+    detail: "Seconds since epoch (Timestamp)",
+  },
+  {
+    label: "UTC",
+    description: "$(globe) UTC",
+    detail: "ddd, DD MMM YYYY HH:mm:ss GMT",
+  },
+];

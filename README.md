@@ -11,7 +11,7 @@ Generate common sequences instantly:
 - Numbers (0-based, 1-based, or custom start).
 - Letters (a–z, A–Z).
 - Roman numerals (i, ii, iii / I, II, III).
-- Dates (ISO, UTC, Locale, Unix)
+- Dates (DateTime, ISO, Locale, Unix, UTC)
 - UUIDs.
 
 ## Usage
@@ -35,6 +35,11 @@ Generate common sequences instantly:
 - PalettePaste: Set Date Format
 
 ## Release Notes
+
+### 1.1.0
+
+- Added new `DateTime` format: Provides local time in `YYYY-MM-DD HH:mm:ss` format.
+- Improved Date Format picker: Added detailed descriptions and timezone indicators (Local vs. UTC) to the Command Palette for better clarity.
 
 ### 1.0.1
 
