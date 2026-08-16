@@ -56,3 +56,22 @@ export function formatDate(format: string, date: Date): string {
       return "";
   }
 }
+
+export function addInterval(baseDate: Date, amount: number, unit: string): Date {
+  const result = new Date(baseDate.getTime());
+  switch (unit.toLowerCase()) {
+    case "d":
+      result.setDate(result.getDate() + amount);
+      break;
+    case "w":
+      result.setDate(result.getDate() + amount * 7);
+      break;
+    case "m":
+      result.setMonth(result.getMonth() + amount);
+      break;
+    case "y":
+      result.setFullYear(result.getFullYear() + amount);
+      break;
+  }
+  return result;
+}

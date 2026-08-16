@@ -1,8 +1,15 @@
 import { strict as assert } from "assert";
 import { Position, Selection } from "vscode";
 import { DATE_FORMAT_OPTIONS } from "../constants";
-import { generateAlpha, generateCounter, generateDate, generateRoman, generateUuid } from "../generators";
-import { formatDate, sortCursors, toAlpha, toRoman } from "../utils";
+import {
+  generateAlpha,
+  generateCounter,
+  generateDate,
+  generateDateSequence,
+  generateRoman,
+  generateUuid,
+} from "../generators";
+import { addInterval, formatDate, sortCursors, toAlpha, toRoman } from "../utils";
 
 suite("Utils", () => {
   test("toAlpha should convert numbers to lowercase letters", () => {
@@ -34,6 +41,30 @@ suite("Utils", () => {
     assert.strictEqual(toRoman(10, true), "X");
     assert.strictEqual(toRoman(58, true), "LVIII");
     assert.strictEqual(toRoman(1994, true), "MCMXCIV");
+  });
+
+  test("addInterval should add days correctly", () => {
+    const base = new Date("2026-08-15T00:00:00Z");
+    const next = addInterval(base, 2, "d");
+    assert.strictEqual(next.toISOString().split("T")[0], "2026-08-17");
+  });
+
+  test("addInterval should add weeks correctly", () => {
+    const base = new Date("2026-08-15T00:00:00Z");
+    const next = addInterval(base, 1, "w");
+    assert.strictEqual(next.toISOString().split("T")[0], "2026-08-22");
+  });
+
+  test("addInterval should add months correctly", () => {
+    const base = new Date("2026-08-15T00:00:00Z");
+    const next = addInterval(base, 1, "m");
+    assert.strictEqual(next.toISOString().split("T")[0], "2026-09-15");
+  });
+
+  test("addInterval should add years correctly", () => {
+    const base = new Date("2026-08-15T00:00:00Z");
+    const next = addInterval(base, 1, "y");
+    assert.strictEqual(next.toISOString().split("T")[0], "2027-08-15");
   });
 
   test("formatDate should handle Compact format", () => {
@@ -198,11 +229,19 @@ suite("Generators", () => {
     assert.strictEqual(typeof result[0], "string");
     assert(result[0].length > 0);
   });
+
+  test("generateDateSequence should increment sequence according to count", () => {
+    const startDate = new Date("2026-08-15T00:00:00Z");
+    const gen = generateDateSequence(1, "d", startDate);
+    const result = gen(3);
+
+    assert.strictEqual(result.length, 3);
+  });
 });
 
 suite("Constants", () => {
   test("DATE_FORMAT_OPTIONS should contain expected formats", () => {
-    const expectedLabels = ["DateTime", "ISO", "Locale", "Unix", "UTC"];
+    const expectedLabels = ["Compact", "ISO", "Locale", "Unix Timestamp", "UTC"];
     expectedLabels.forEach((label) => {
       const exists = DATE_FORMAT_OPTIONS.some((option) => option.label === label);
       assert.strictEqual(exists, true, `Format option '${label}' is missing from DATE_FORMAT_OPTIONS`);

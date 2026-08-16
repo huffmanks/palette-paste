@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 import { window, workspace } from "vscode";
 
-import { formatDate, sortCursors, toAlpha, toRoman } from "./utils";
+import { addInterval, formatDate, sortCursors, toAlpha, toRoman } from "./utils";
 
 type SequenceGenerator = (count: number) => readonly string[];
 
@@ -46,5 +46,17 @@ export function generateDate(): SequenceGenerator {
     const format = config.get("defaultDateFormat") as string;
     const date = formatDate(format, new Date());
     return Array(count).fill(date);
+  };
+}
+
+export function generateDateSequence(amount: number, unit: string, startDate = new Date()): SequenceGenerator {
+  return (count: number) => {
+    const config = workspace.getConfiguration("palettePaste");
+    const format = config.get("defaultDateFormat") as string;
+
+    return Array.from({ length: count }, (_, i) => {
+      const nextDate = addInterval(startDate, amount * i, unit);
+      return formatDate(format, nextDate);
+    });
   };
 }

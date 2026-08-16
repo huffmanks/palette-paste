@@ -3,9 +3,9 @@
   "displayName": "PalettePaste",
   "description": "Quickly generate and insert sequences at your cursor(s) in VS Code. Supports numbers, letters, Roman numerals, dates and UUIDs.",
   "publisher": "huffmanks",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "engines": {
-    "vscode": "^1.100.0"
+    "vscode": "^1.133.0"
   },
   "categories": [
     "Other"
@@ -81,6 +81,10 @@
         "title": "PalettePaste: Date"
       },
       {
+        "command": "huffmanks.palette-paste.dateSequenceFromPrompt",
+        "title": "PalettePaste: Date Sequence"
+      },
+      {
         "command": "huffmanks.palette-paste.setDefaultDateFormat",
         "title": "PalettePaste: Set Date Format"
       }
@@ -101,7 +105,6 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "~20.17.47",
     "@types/vscode": "^1.100.0",
@@ -112,6 +115,7 @@
     "@vscode/vsce": "^3.7.1",
     "esbuild": "^0.25.3",
     "eslint": "^9.25.1",
+    "mocha": "^11.8.0",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.8.3"
   }

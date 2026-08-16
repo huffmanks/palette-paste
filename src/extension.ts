@@ -1,5 +1,16 @@
 import * as vscode from "vscode";
-import { insertDate, insertUuid, lowerAlpha, lowerRoman, numberFromOne, numberFromPrompt, numberFromZero, upperAlpha, upperRoman } from "./commands";
+import {
+  dateSequenceFromPrompt,
+  insertDate,
+  insertUuid,
+  lowerAlpha,
+  lowerRoman,
+  numberFromOne,
+  numberFromPrompt,
+  numberFromZero,
+  upperAlpha,
+  upperRoman,
+} from "./commands";
 import { setDefaultDateFormat } from "./prompts";
 
 export function activate(ctx: vscode.ExtensionContext) {
@@ -13,6 +24,7 @@ export function activate(ctx: vscode.ExtensionContext) {
     vscode.commands.registerCommand("huffmanks.palette-paste.upperRoman", upperRoman),
     vscode.commands.registerCommand("huffmanks.palette-paste.insertUuid", insertUuid),
     vscode.commands.registerCommand("huffmanks.palette-paste.insertDate", insertDate),
+    vscode.commands.registerCommand("huffmanks.palette-paste.dateSequenceFromPrompt", dateSequenceFromPrompt),
     vscode.commands.registerCommand("huffmanks.palette-paste.setDefaultDateFormat", setDefaultDateFormat),
   );
 }

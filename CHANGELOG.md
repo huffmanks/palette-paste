@@ -3,7 +3,7 @@
 ## 1.2.0
 
 - Renamed date time formats for clarity, (Compact, ISO, Locale, Unix Timestamp, UTC).
-- Added `Date Sequence with interval`.
+- Added `Insert Date Sequence` with interval (e.g., 2026-08-15 +1d, +7d, +1m, +1y).
 
 ## 1.1.0
 
