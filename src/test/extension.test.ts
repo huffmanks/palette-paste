@@ -36,9 +36,9 @@ suite("Utils", () => {
     assert.strictEqual(toRoman(1994, true), "MCMXCIV");
   });
 
-  test("formatDate should handle DateTime format", () => {
+  test("formatDate should handle Compact format", () => {
     const date = new Date("2026-04-05T00:00:00Z");
-    const result = formatDate("DateTime", date);
+    const result = formatDate("Compact", date);
     assert.match(result, /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
   });
 
@@ -55,9 +55,9 @@ suite("Utils", () => {
     assert(result.length > 0);
   });
 
-  test("formatDate should handle Unix format", () => {
+  test("formatDate should handle Unix Timestamp format", () => {
     const date = new Date("2026-04-05T00:00:00Z");
-    const result = formatDate("Unix", date);
+    const result = formatDate("Unix Timestamp", date);
     assert.strictEqual(result, "1775347200");
   });
 
@@ -74,7 +74,11 @@ suite("Utils", () => {
   });
 
   test("sortCursors should sort selections by line and character", () => {
-    const selections = [new Selection(new Position(2, 5), new Position(2, 5)), new Selection(new Position(1, 10), new Position(1, 10)), new Selection(new Position(2, 3), new Position(2, 3))];
+    const selections = [
+      new Selection(new Position(2, 5), new Position(2, 5)),
+      new Selection(new Position(1, 10), new Position(1, 10)),
+      new Selection(new Position(2, 3), new Position(2, 3)),
+    ];
 
     const sorted = sortCursors(selections);
 
@@ -85,7 +89,10 @@ suite("Utils", () => {
   });
 
   test("sortCursors should not modify original array", () => {
-    const selections = [new Selection(new Position(2, 5), new Position(2, 5)), new Selection(new Position(1, 10), new Position(1, 10))];
+    const selections = [
+      new Selection(new Position(2, 5), new Position(2, 5)),
+      new Selection(new Position(1, 10), new Position(1, 10)),
+    ];
 
     const original = [...selections];
     sortCursors(selections);

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.2.0
+
+- Renamed date time formats for clarity, (Compact, ISO, Locale, Unix Timestamp, UTC).
+- Added `Date Sequence with interval`.
+
 ## 1.1.0
 
 - Added new `DateTime` format: Provides local time in `YYYY-MM-DD HH:mm:ss` format.

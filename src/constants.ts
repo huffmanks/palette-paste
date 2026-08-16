@@ -16,8 +16,8 @@ export const NUMERALS: [string, number][] = [
 
 export const DATE_FORMAT_OPTIONS = [
   {
-    label: "DateTime",
-    description: "$(home) Local",
+    label: "Compact",
+    description: "$(home) Local Time Zone",
     detail: "YYYY-MM-DD HH:mm:ss",
   },
   {
@@ -27,13 +27,13 @@ export const DATE_FORMAT_OPTIONS = [
   },
   {
     label: "Locale",
-    description: "$(home) Local",
-    detail: "Based on your system’s regional settings",
+    description: "$(home) Local Time Zone",
+    detail: "e.g. [en-US] M/D/YYYY, h:mm:ss A — based on system’s regional settings",
   },
   {
-    label: "Unix",
+    label: "Unix Timestamp",
     description: "$(globe) UTC",
-    detail: "Seconds since epoch (Timestamp)",
+    detail: "e.g. 1786818432 - seconds since Jan. 1, 1970",
   },
   {
     label: "UTC",

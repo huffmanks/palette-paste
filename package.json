@@ -32,13 +32,13 @@
         "palettePaste.defaultDateFormat": {
           "type": "string",
           "enum": [
-            "DateTime",
+            "Compact",
             "ISO",
             "Locale",
-            "Unix",
+            "Unix Timestamp",
             "UTC"
           ],
-          "default": "DateTime",
+          "default": "Compact",
           "description": "Format to use when inserting the current date. Change using the 'Set Default Date Format' command."
         }
       }
@@ -101,8 +101,9 @@
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
+    "@types/node": "~20.17.47",
     "@types/vscode": "^1.100.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",

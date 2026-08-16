@@ -42,13 +42,13 @@ function formatToDateTime(date: Date): string {
 
 export function formatDate(format: string, date: Date): string {
   switch (format) {
-    case "DateTime":
+    case "Compact":
       return formatToDateTime(date);
     case "ISO":
       return date.toISOString();
     case "Locale":
       return date.toLocaleString();
-    case "Unix":
+    case "Unix Timestamp":
       return Math.floor(date.getTime() / 1000).toString();
     case "UTC":
       return date.toUTCString();
